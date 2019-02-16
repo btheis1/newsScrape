@@ -1,0 +1,26 @@
+{
+  "name": "newsscrape",
+  "version": "1.0.0",
+  "description": "App using mongoose, cheerio, express, and handlebars to scrape a news site and store user comments. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btheis1/newsScrape.git"
+  },
+  "author": "Brook Theis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/btheis1/newsScrape/issues"
+  },
+  "homepage": "https://github.com/btheis1/newsScrape#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.4.13"
+  }
+}
