@@ -22,3 +22,35 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
 });
+
+//ROUTES
+app.get("/scrape", function(req, res) {
+    axios.get("https://www.bbc.com/news").then(function(response) {
+        var $ = cheerio.load(response.data);
+
+        $("story-body h1").each(function(i, element) {
+            var result = {};
+
+            result.headline = $(this)
+                .children("a")
+                .text();
+            result.summary = $(this)
+                .children("a")
+                .text();
+            result.URL = $(this)
+                .children("a")
+                .attr("href");
+            
+            db.Article.create(result)
+                .then(function(dbArticle) {
+                    console.log(dbArticle);
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+        });
+
+        res.send("Scrape Complete");
+    });
+
+})
